@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李厚威 - 视频剪辑作品集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#475569',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .video-card-hover {
+                @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+            }
+            /* 竖屏视频容器适配样式 */
+            .vertical-video-container {
+                @apply w-full max-w-md mx-auto;
+            }
+            .video-player {
+                @apply w-full h-auto object-contain;
+            }
+            /* 封面比例适配 - 9:16竖屏（信息流/财经）、16:9横屏（其他） */
+            .cover-9-16 {
+                @apply aspect-[9/16] w-full;
+            }
+            .cover-16-9 {
+                @apply aspect-[16/9] w-full;
+            }
+            .cover-img {
+                @apply w-full h-full object-cover;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+<!-- 导航栏 -->
+<nav id="navbar" class="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="#" class="text-xl font-bold text-primary">李厚威 | 视频剪辑</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden md:flex space-x-8">
+            <a href="#hero" class="text-secondary hover:text-primary transition-colors">首页</a>
+            <a href="#works" class="text-secondary hover:text-primary transition-colors">作品展示</a>
+            <a href="#about" class="text-secondary hover:text-primary transition-colors">关于我</a>
+            <a href="#contact" class="text-secondary hover:text-primary transition-colors">联系方式</a>
+        </div>
+        <!-- 移动端菜单按钮 -->
+        <button id="menuBtn" class="md:hidden text-secondary text-xl">
+            <i class="fa fa-bars"></i>
+        </button>
+    </div>
+    <!-- 移动端导航菜单 -->
+    <div id="mobileMenu" class="md:hidden hidden bg-white shadow-md">
+        <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+            <a href="#hero" class="text-secondary hover:text-primary py-2 transition-colors">首页</a>
+            <a href="#works" class="text-secondary hover:text-primary py-2 transition-colors">作品展示</a>
+            <a href="#about" class="text-secondary hover:text-primary py-2 transition-colors">关于我</a>
+            <a href="#contact" class="text-secondary hover:text-primary py-2 transition-colors">联系方式</a>
+        </div>
+    </div>
+</nav>
+
+<!-- 首页Hero（移除个人形象，仅保留文字内容并居中） -->
+<section id="hero" class="pt-28 pb-20 bg-gradient-to-b from-blue-50 to-white">
+    <div class="container mx-auto px-4 flex flex-col items-center text-center">
+        <div class="w-full max-w-3xl">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+                李厚威<br>
+                <span class="text-primary">视频剪辑师</span>
+            </h1>
+            <p class="text-lg text-secondary mb-8">
+                专注<span class="font-semibold">信息流变现</span>与<span class="font-semibold">商业广告</span>剪辑<br>
+                精通多平台适配，擅长节奏把控与视觉呈现
+            </p>
+            <a href="#works" class="bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors inline-block">
+                查看11部实战作品 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 作品展示区：11个作品（竖屏封面9:16/横屏封面16:9 精准适配） -->
+<section id="works" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-16">实战作品展示</h2>
+        
+        <!-- 分类1：信息流视频 - 封面9:16竖屏 -->
+        <div class="mb-16">
+            <h3 class="text-2xl font-semibold mb-8 pl-4 border-l-4 border-primary">一、信息流视频</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- 1. 小红书种草-留香珠 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden video-card-hover">
+                    <div class="relative cover-9-16">
+                        <img src="images/作品1封面.jpg" alt="小红书种草-留香珠" class="cover-img">
+                        <button onclick="openVideo('videos/作品1.mp4', '小红书种草-留香珠', true)" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-primary/80 text-white flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa fa-play text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold">小红书种草-留香珠</h3>
+                        <div class="flex items-center text-xs text-gray-500 mt-3">
+                            <span class="bg-pink-100 text-pink-600 px-2 py-1 rounded text-xs">小红书</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. 千川-燕窝花胶羹 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden video-card-hover">
+                    <div class="relative cover-9-16">
+                        <img src="images/作品2封面.jpg" alt="千川-燕窝花胶羹" class="cover-img">
+                        <button onclick="openVideo('videos/作品2.mp4', '千川-燕窝花胶羹', true)" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-primary/80 text-white flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa fa-play text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold">千川-燕窝花胶羹</h3>
+                        <div class="flex items-center text-xs text-gray-500 mt-3">
+                            <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs">千川电商</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 千川-体德健身教练课 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden video-card-hover">
+                    <div class="relative cover-9-16">
+                        <img src="images/作品3封面.jpg" alt="千川-体德健身教练课" class="cover-img">
+                        <button onclick="openVideo('videos/作品3.mp4', '千川-体德健身教练课', true)" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-primary/80 text-white flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa fa-play text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold">千川-体德健身教练课</h3>
+                        <div class="flex items-center text-xs text-gray-500 mt-3">
+                            <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs">千川电商</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. 抖音主页-FONA丰诺牙椅 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden video-card-hover">
+                    <div class="relative cover-9-16">
+                        <img src="images/作品4封面.jpg" alt="抖音主页-FONA丰诺牙椅" class="cover-img">
+                        <button onclick="openVideo('videos/作品4.mp4', '抖音主页-FONA丰诺牙椅', true)" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-primary/80 text-white flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa fa-play text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold">抖音主页-FONA丰诺牙椅</h3>
+                        <div class="flex items-center text-xs text-gray-500 mt-3">
+                            <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded text-xs">抖音主页</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分类2：商业广告 - 封面16:9横屏 -->
+        <div class="mb-16">
+            <h3 class="text-2xl font-semibold mb-8 pl-4 border-l-4 border-primary">二、商业广告</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- 5. 探店宣传-不一班牛油火锅 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden video-card-hover">
+                    <div class="relative cover-16-9">
+                        <img src="images/作品5封面.jpg" alt="探店宣传-不一班牛油火锅" class="cover-img">
+                        <button onclick="openVideo('videos/作品5.mp4', '探店宣传-不一班牛油火锅', false)" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-primary/80 text-white flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa fa-play text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold">探店宣传-不一班牛油火锅</h3>
+                        <div class="flex items-center text-xs text-gray-500 mt-3">
+                            <span class="bg-orange-100 text-orange-600 px-2 py-1 rounded text-xs">探店广告</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. 四川文旅-捷途汽车 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden video-card-hover">
+                    <div class="relative cover-16-9">
+                        <img src="images/作品6封面.jpg" alt="四川文旅-捷途汽车" class="cover-img">
+                        <button onclick="openVideo('videos/作品6.mp4', '四川文旅-捷途汽车', false)" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-primary/80 text-white flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa fa-play text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold">四川文旅-捷途汽车</h3>
+                        <div class="flex items-center text-xs text-gray-500 mt-3">
+                            <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs">文旅/汽车</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. 会宝印象-有机石榴 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden video-card-hover">
+                    <div class="relative cover-16-9">
+                        <img src="images/作品7封面.jpg" alt="会宝印象-有机石榴" class="cover-img">
+                        <button onclick="openVideo('videos/作品7.mp4', '会宝印象-有机石榴', false)" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-primary/80 text-white flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa fa-play text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold">会宝印象-有机石榴</h3>
+                        <div class="flex items-center text-xs text-gray-500 mt-3">
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded text-xs">产品广告</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. 明基养眼护眼灯 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden video-card-hover">
+                    <div class="relative cover-16-9">
+                        <img src="images/作品8封面.jpg" alt="明基养眼护眼灯" class="cover-img">
+                        <button onclick="openVideo('videos/作品8.mp4', '明基养眼护眼灯', false)" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-primary/80 text-white flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa fa-play text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold">明基养眼护眼灯</h3>
+                        <div class="flex items-center text-xs text-gray-500 mt-3">
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded text-xs">产品广告</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分类3：其他类型作品 - 财经9:16竖屏 / 婚礼/AI漫剧16:9横屏 -->
+        <div>
+            <h3 class="text-2xl font-semibold mb-8 pl-4 border-l-4 border-primary">三、其他类型作品</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- 9. 婚礼-《冯如龙&刘晓秋》 - 横屏封面 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden video-card-hover">
+                    <div class="relative cover-16-9">
+                        <img src="images/作品9封面.jpg" alt="婚礼-冯如龙&刘晓秋" class="cover-img">
+                        <button onclick="openVideo('videos/作品9.mp4', '婚礼-冯如龙&刘晓秋', false)" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-primary/80 text-white flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa fa-play text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold">婚礼-冯如龙&刘晓秋</h3>
+                        <div class="flex items-center text-xs text-gray-500 mt-3">
+                            <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs">婚礼纪实</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. 财经-模仿案例 - 竖屏封面 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden video-card-hover">
+                    <div class="relative cover-9-16">
+                        <img src="images/作品10封面.jpg" alt="财经-模仿案例" class="cover-img">
+                        <button onclick="openVideo('videos/作品10.mp4', '财经-模仿案例', true)" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-primary/80 text-white flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa fa-play text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold">财经-模仿案例</h3>
+                        <div class="flex items-center text-xs text-gray-500 mt-3">
+                            <span class="bg-teal-100 text-teal-600 px-2 py-1 rounded text-xs">财经资讯</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. AI漫剧-自制案例 - 横屏封面 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden video-card-hover">
+                    <div class="relative cover-16-9">
+                        <img src="images/作品11封面.jpg" alt="AI漫剧-自制案例" class="cover-img">
+                        <button onclick="openVideo('videos/作品11.mp4', 'AI漫剧-自制案例', false)" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-primary/80 text-white flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa fa-play text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold">AI漫剧-自制案例</h3>
+                        <div class="flex items-center text-xs text-gray-500 mt-3">
+                            <span class="bg-indigo-100 text-indigo-600 px-2 py-1 rounded text-xs">AI创意</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 关于我（保留头像展示） -->
+<section id="about" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-16">关于我</h2>
+        <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-8">
+            <div class="flex flex-col md:flex-row items-center mb-8">
+                <img src="images/头像.jpg" alt="李厚威头像" class="w-32 h-32 rounded-full mb-6 md:mb-0 md:mr-8 object-cover border-4 border-primary/20">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-2">李厚威</h3>
+                    <p class="text-primary font-medium mb-1">求职意向：视频剪辑师</p>
+                    <p class="text-secondary">联系方式：18967944817 / 3167099185@qq.com</p>
+                </div>
+            </div>
+            <div class="text-secondary space-y-4">
+                <p>
+                    具备扎实的视频剪辑实操能力，熟练应对信息流电商、商业广告、婚礼纪实、财经资讯等多类型视频的剪辑需求。
+                </p>
+                <p>
+                    精通主流剪辑软件，能够精准理解需求，高效完成素材筛选、粗剪、精剪、调色、包装及输出全流程工作。尤其擅长把握视频节奏，适配小红书、千川、抖音等多平台的传播逻辑。
+                </p>
+                <p>
+                    求职期望：加入专业的视频创作团队，专注于剪辑执行工作，用高效的产出和优质的画面为团队创造价值。
+                </p>
+            </div>
+            <!-- 技能掌握 -->
+            <div class="mt-8">
+                <h4 class="font-semibold text-lg mb-4">技能掌握</h4>
+                <div class="flex flex-wrap gap-3">
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full">Premiere Pro</span>
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full">After Effects</span>
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full">剪映专业版</span>
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full">多平台适配剪辑</span>
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full">电商信息流剪辑</span>
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full">商业广告包装</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 联系方式 -->
+<section id="contact" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-16">联系我</h2>
+        <div class="max-w-xl mx-auto bg-primary/5 rounded-xl p-8 shadow-sm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xl mr-4">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">电话</h4>
+                        <p class="text-secondary">18967944817</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xl mr-4">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">邮箱</h4>
+                        <p class="text-secondary">3167099185@qq.com</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xl mr-4">
+                        <i class="fa fa-file-pdf-o"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">简历下载</h4>
+                        <a href="resume/李厚威-剪辑简历.pdf" class="text-primary hover:underline" download>点击下载完整简历</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xl mr-4">
+                        <i class="fa fa-weixin"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">微信</h4>
+                        <p class="text-secondary">电话/邮箱沟通获取</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p class="text-secondary text-lg">期待与您合作，专注剪辑，创造精彩！</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+        <p>© 2026 李厚威 - 视频剪辑作品集 | 求职专用</p>
+        <p class="text-gray-400 text-sm mt-2">专注信息流与商业视频剪辑</p>
+    </div>
+</footer>
+
+<!-- 视频播放弹窗 -->
+<div id="videoModal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
+    <div id="videoContainer" class="w-full max-w-4xl relative">
+        <!-- 关闭按钮 -->
+        <button onclick="closeVideo()" class="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300 transition-colors">
+            <i class="fa fa-times"></i>
+        </button>
+        <!-- 视频播放容器 -->
+        <div class="bg-black rounded-xl overflow-hidden">
+            <h4 id="videoTitle" class="text-white p-4 bg-gray-900 text-xl font-semibold"></h4>
+            <video id="videoPlayer" class="video-player" controls autoplay>
+                你的浏览器不支持HTML5视频播放，请升级浏览器。
+            </video>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript 交互逻辑 -->
+<script>
+    // 移动端菜单切换
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const icon = menuBtn.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('bg-white', 'shadow');
+            navbar.classList.remove('bg-white/90');
+        } else {
+            navbar.classList.remove('bg-white', 'shadow');
+            navbar.classList.add('bg-white/90');
+        }
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            }
+        });
+    });
+
+    // 视频弹窗控制（竖屏/横屏适配）
+    function openVideo(videoSrc, videoTitle, isVertical = false) {
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('videoPlayer');
+        const title = document.getElementById('videoTitle');
+        const container = document.getElementById('videoContainer');
+        
+        if (isVertical) {
+            container.classList.add('vertical-video-container');
+            container.classList.remove('max-w-4xl');
+        } else {
+            container.classList.remove('vertical-video-container');
+            container.classList.add('max-w-4xl');
+        }
+        
+        player.src = videoSrc;
+        title.textContent = videoTitle;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideo() {
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('videoPlayer');
+        const container = document.getElementById('videoContainer');
+        
+        container.classList.remove('vertical-video-container');
+        container.classList.add('max-w-4xl');
+        
+        modal.classList.add('hidden');
+        player.pause();
+        player.src = '';
+        document.body.style.overflow = 'auto';
+    }
+
+    // 点击弹窗外层关闭
+    document.getElementById('videoModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeVideo();
+        }
+    });
+</script>
+
+</body>
+</html>
